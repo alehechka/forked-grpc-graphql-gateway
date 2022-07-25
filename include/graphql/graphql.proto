@@ -26,9 +26,9 @@ import "google/protobuf/descriptor.proto";
 message GraphqlService {
   // gRPC default connection host.
   // This value should include host and port, say localhost:50051.
-  string host = 1;
+  // string host = 1;
   // If true, automatic connection with insecure option.
-  bool insecure = 2;
+  // bool insecure = 2;
 }
 
 
