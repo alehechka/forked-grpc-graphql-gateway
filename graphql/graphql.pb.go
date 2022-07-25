@@ -81,17 +81,7 @@ func (GraphqlType) EnumDescriptor() ([]byte, []int) {
 	return file_graphql_proto_rawDescGZIP(), []int{0}
 }
 
-// Extend ServiceOptions in order to define grpc connection setting.
-// User can use this option as following:
-//
-// service Greeter {
-//    option (graphql.service) = {
-//      host: "localhost:50051" // define grpc connection host and port
-//      insecure: true          // set true if connect to insecure grpc server
-//    };
-//
-//    ... some rpc definitions
-// }
+// Base GraphqlService that gateway is built upon.
 type GraphqlService struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
