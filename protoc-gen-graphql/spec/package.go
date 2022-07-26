@@ -22,10 +22,14 @@ type Package struct {
 	CamelName               string
 	Path                    string
 	GeneratedFilenamePrefix string
+	FileName                string
 }
 
 func NewPackage(g PackageGetter) *Package {
 	p := &Package{}
+	p.GeneratedFilenamePrefix = strings.TrimSuffix(g.Filename(), filepath.Ext(g.Filename()))
+	p.FileName = filepath.Base(p.GeneratedFilenamePrefix)
+
 	if pkg := g.GoPackage(); pkg != "" {
 		// Support custom package definitions like example.com/path/to/package:packageName
 		if index := strings.Index(pkg, ";"); index > -1 {
@@ -45,7 +49,6 @@ func NewPackage(g PackageGetter) *Package {
 		)
 	}
 
-	p.GeneratedFilenamePrefix = strings.TrimSuffix(g.Filename(), ".proto")
 	p.CamelName = strcase.ToCamel(p.Name)
 	return p
 }
