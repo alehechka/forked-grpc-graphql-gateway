@@ -43,3 +43,6 @@ all: clean build
 
 compile:
 	cd ${GRAPHQL_CMD} && GOOS=linux GOARCH=amd64 go build -ldflags "-X main.version=${VERSION}" -o ${GOPATH}/bin/${GRAPHQL_CMD}
+
+compile_mac:
+	cd ${GRAPHQL_CMD} && GOOS=darwin GOARCH=arm64 go build -ldflags "-X main.version=${VERSION}" -o ${GOPATH}/bin/${GRAPHQL_CMD}
